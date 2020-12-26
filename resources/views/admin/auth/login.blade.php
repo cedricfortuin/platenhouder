@@ -41,7 +41,7 @@
 
                         <div class="form-group row mb-3">
                             <div class="col-md-6 offset-4">
-                                <a class="text-decoration-none" href="{{ route('login') }}">Geen account?</a>
+                                <a class="text-decoration-none" href="{{ route('register') }}">Geen account?</a>
                             </div>
                         </div>
 
