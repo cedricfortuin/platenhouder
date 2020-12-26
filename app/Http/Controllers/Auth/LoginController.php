@@ -23,8 +23,8 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($request->only('firstname', 'email', 'password'), $request->only('email'))) {
-            return back()->with('status', 'Invalid login details');
+            return back()->with('message', 'Verkeerde inloggegevens.');
         }
-        return redirect()->route('index');
+        return redirect()->route('index')->with('message', 'Je bent succesvol aangemeld en ingelogd');
     }
 }

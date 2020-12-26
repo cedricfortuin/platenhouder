@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script
         src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -22,8 +23,11 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset('js/sorting.js') }}"></script>
     <title>Familie Fortuin</title>
+
+    @include('popper::assets')
 </head>
 <body>
+<section id="top"></section>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
@@ -82,6 +86,21 @@
         </div>
     </div>
 </div>
+
+@auth
+    <div class="container mb-5 text-center">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <a class="btn btn-outline-primary" href="#top">Naar boven</a>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center">
+        <div>
+            <p>© {{ date('Y') }} <a class="text-decoration-none" href="https://cedricfortuin.com" target="_blank" {{ Popper::pop('Hehe reclame') }}>Cedric Fortuin</a></p>
+        </div>
+    </footer>
+@endauth
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script>
     function searchForRecord()

@@ -16,7 +16,8 @@
                     <div class="mb-3">
                         <div class="mb-3">
                             <label for="name" class="form-label">Naam van plaat</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="emailHelp" name="name" value="{{ old('name') }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="emailHelp" name="name" value="{{ old('name') }}" onkeyup="checkIfExists()">
+                            <p class="text-warning" id="showAlert"></p>
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -57,15 +58,41 @@
             <button type="submit" class="btn btn-primary">Opslaan</button>
         </form>
     </div>
+    <script>
+        function checkIfExists()
+        {
+            let filter = event.target.value.toUpperCase();
+            let rows = document.querySelector("#recordTable tbody").rows;
+            let alert = document.getElementById('showAlert');
+
+            for (let i = 0; i < rows.length; i++) {
+                let firstCol = rows[i].cells[1].textContent.toUpperCase();
+                if (firstCol.indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                    alert.innerText = "Let op, deze plaat bestaat al in de database.";
+                } else {
+                    rows[i].style.display = "none";
+                    alert.innerText = "";
+                }
+            }
+        }
+    </script>
 @endsection
 
 @section('section_2')
     <hr class="mt-5">
     <div class="row">
-        <div class="col-md-6 text-start">
+        <div class="col-md-4 text-start">
             <p>Zie hier alle ingevoerde platen</p>
         </div>
-        <div class="col-md-6 text-end">
+        <div class="col-md-4 text-center">
+            @if($pagination[0] == '1')
+                <p>Pagination is <span class="text-success">ingeschakeld.</span></p>
+            @elseif($pagination[0] == '0')
+                <p>Pagination is <span class="text-warning">uitgeschakeld.</span></p>
+            @endif
+        </div>
+        <div class="col-md-4 text-end">
             <p>Totaal aantal: {{ $total }}</p>
         </div>
     </div>
@@ -73,13 +100,13 @@
         <table class="table" id="recordTable">
             <thead>
             <tr class="header">
-                <th>#</th>
-                <th>Naam</th>
-                <th>Artiest</th>
-                <th>Type</th>
-                <th>Eigenaar</th>
-                <th>Hoeveelheid</th>
-                <th>Ingevoerd op</th>
+                <th @if($pagination[0] == '0') style="width:5%" @endif>#</th>
+                <th @if($pagination[0] == '0') style="width:30%" @endif>Naam</th>
+                <th @if($pagination[0] == '0') style="width:30%" @endif>Artiest</th>
+                <th @if($pagination[0] == '0') style="width:5%" @endif>Type</th>
+                <th @if($pagination[0] == '0') style="width:5%" @endif>Eigenaar</th>
+                <th @if($pagination[0] == '0') style="width:5%" @endif>Hoeveelheid</th>
+                <th @if($pagination[0] == '0') style="width:14.3%" @endif>Ingevoerd op</th>
             </tr>
             </thead>
             <tbody>
@@ -96,8 +123,10 @@
             @endforeach
             </tbody>
         </table>
-        <div class="d-flex justify-content-center">
-            {!! $records->links() !!}
-        </div>
+        @if($pagination[0] == '1')
+            <div class="d-flex justify-content-center">
+                {!! $records->links() !!}
+            </div>
+        @endif
     </div>
 @endsection

@@ -10,6 +10,6 @@ class LogoutController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect()->route('index');
+        return redirect()->route('index')->with('message', 'Je bent succesvol uitgelogd.');
     }
 }

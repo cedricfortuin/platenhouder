@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ Route::get('/registreren', [RegisterController::class, 'index'])->name('register
 Route::post('/registreren', [RegisterController::class, 'register']);
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::post('/update', [ConfigurationController::class, 'updatePagination'])->name('update_pagination');
