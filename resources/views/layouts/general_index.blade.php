@@ -21,7 +21,7 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
     <script src="{{ asset('js/sorting.js') }}"></script>
-    <title>Platenhouder</title>
+    <title>Familie Fortuin</title>
 </head>
 <body>
 <div class="container">
