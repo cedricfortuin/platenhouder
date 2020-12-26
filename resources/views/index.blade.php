@@ -17,7 +17,7 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Naam van plaat</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="emailHelp" name="name" value="{{ old('name') }}" onkeyup="checkIfExists()">
-                            <p class="text-warning" id="showAlert"></p>
+                            <p class="text-info" id="showAlert">Check onderaan of de plaat al bestaat</p>
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -63,16 +63,13 @@
         {
             let filter = event.target.value.toUpperCase();
             let rows = document.querySelector("#recordTable tbody").rows;
-            let alert = document.getElementById('showAlert');
 
             for (let i = 0; i < rows.length; i++) {
                 let firstCol = rows[i].cells[1].textContent.toUpperCase();
                 if (firstCol.indexOf(filter) > -1) {
                     rows[i].style.display = "";
-                    alert.innerText = "";
                 } else {
                     rows[i].style.display = "none";
-                    alert.innerText = "Let op, deze plaat bestaat al in de database.";
                 }
             }
         }
