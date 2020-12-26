@@ -25,15 +25,29 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('export_records') }}">Exporteren naar Excel</a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('export_records') }}">Exporteren naar Excel</a>
+                        </li>
+                    @endauth
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link active">Ingelogd als: {{ auth()->user()->name }}</a>
+                        </li>
+                    @endauth
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('logout') }}">Uitloggen</a>
+                        </li>
+                    @endauth
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchForRecord()" id="recordSearch">
-                </form>
+                @auth
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchForRecord()" id="recordSearch">
+                    </form>
+                @endauth
             </div>
         </div>
     </nav>

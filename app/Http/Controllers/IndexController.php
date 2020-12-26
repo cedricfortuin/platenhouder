@@ -10,17 +10,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-
-        $name = 'Wish You Were Here';
-        $double = RecordModel::where('name', '=', $name)->first();
-        if ($double !== null) {
-            dd($double);
-        } else {
-            dd('Hello World');
-        }
-
         $records = RecordModel::orderBy('id')->paginate(30);
         $total = RecordModel::all()->count();
 
