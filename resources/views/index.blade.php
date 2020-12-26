@@ -17,7 +17,7 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Naam van plaat</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="emailHelp" name="name" value="{{ old('name') }}" onkeyup="checkIfExists()">
-                            <p class="text-info" id="showAlert">Check onderaan of de plaat al bestaat</p>
+                            <small class="text-info" id="showAlert">Check onderaan of de plaat al bestaat</small>
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
