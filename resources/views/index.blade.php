@@ -69,10 +69,10 @@
                 let firstCol = rows[i].cells[1].textContent.toUpperCase();
                 if (firstCol.indexOf(filter) > -1) {
                     rows[i].style.display = "";
-                    alert.innerText = "Let op, deze plaat bestaat al in de database.";
+                    alert.innerText = "";
                 } else {
                     rows[i].style.display = "none";
-                    alert.innerText = "";
+                    alert.innerText = "Let op, deze plaat bestaat al in de database.";
                 }
             }
         }
