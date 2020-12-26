@@ -67,7 +67,7 @@
 
             for (let i = 0; i < rows.length; i++) {
                 let firstCol = rows[i].cells[1].textContent.toUpperCase();
-                if (firstCol.indexOf(filter) > -1) {
+                if (firstCol.indexOf(filter) > 0) {
                     rows[i].style.display = "";
                     alert.innerText = "";
                 } else {
