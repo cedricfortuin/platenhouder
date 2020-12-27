@@ -103,7 +103,7 @@
                 <th @if($pagination[0] == '0') style="width:5%" @endif>Type</th>
                 <th @if($pagination[0] == '0') style="width:5%" @endif>Eigenaar</th>
                 <th @if($pagination[0] == '0') style="width:5%" @endif>Hoeveelheid</th>
-                <th @if($pagination[0] == '0') style="width:14.3%" @endif>Ingevoerd op</th>
+                <th @if($pagination[0] == '0') style="width:14.3%" @endif></th>
             </tr>
             </thead>
             <tbody>
@@ -114,9 +114,73 @@
                     <td>{{ $record->artist }}</td>
                     <td>{{ $record->type }}</td>
                     <td>{{ $record->owner }}</td>
-                    <td>{{ $record->amount }}</td>
-                    <td>{{ date('d-m-Y', strtotime($record->created_at)) }}</td>
+                    <td class="text-center">{{ $record->amount }}</td>
+                    <td class="text-end">
+                        <a type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editModal{{ $record->id }}"
+                                            href="" {{ Popper::position('left')->pop($record->name . ' bewerken') }}>
+                            <i class="fas fa-pen"></i>
+                        </a>
+                    </td>
                 </tr>
+
+{{--                Modal to edit the record--}}
+                <div class="modal fade" id="editModal{{ $record->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/updateRecord/{{ $record->id }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Naam plaat</label>
+                                            <input type="text" class="form-control" id="name" required name="name" value="{{ $record->name }}" onblur="checkIfEmpty('name')">
+                                            <small class="text-danger" id="nameAlert"></small>
+                                            @error('name')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="artist">Naam artiest</label>
+                                            <input type="text" class="form-control" id="artist" required name="artist" value="{{ $record->artist }}" onblur="checkIfEmpty('artist')">
+                                            <small class="text-danger" id="artistAlert"></small>
+                                            @error('artist')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5">
+                                        <div class="form-group col-md-6">
+                                            <label for="amount">Hoeveelheid</label>
+                                            <input type="text" class="form-control" id="amount" name="amount" value="{{ $record->amount }}">
+                                            <small class="text-danger" id="amountAlert"></small>
+                                            @error('amount')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="owner">Eigenaar</label>
+                                            <input type="text" class="form-control ckeditor" id="owner" name="owner" value="{{ $record->owner }}">
+                                            <small class="text-danger" id="ownerAlert"></small>
+                                            @error('owner')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-sm" data-dismiss="modal">Annuleren</button>
+                                        <button type="submit" class="btn btn-primary btn-sm" id="button_save">Opslaan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             @endforeach
             </tbody>
         </table>

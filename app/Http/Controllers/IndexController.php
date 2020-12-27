@@ -95,12 +95,18 @@ class IndexController extends Controller
     public function updateRecord(Request $request, $id)
     {
         $request->validate([
-            'new_amount' => 'required|max:256'
+            'name' => 'required|max:256',
+            'artist' => 'required|max:256',
+            'amount' => 'max:256',
+            'owner' => 'max:256'
         ]);
 
         RecordModel::where('id', '=', $id)
             ->update([
-                'amount' => $request->new_amount
+                'name' => $request->name,
+                'artist' => $request->artist,
+                'owner' => $request->owner,
+                'amount' => $request->amount
             ]);
 
         return redirect()->route('index')->with('message', 'Succesvol aangepast');

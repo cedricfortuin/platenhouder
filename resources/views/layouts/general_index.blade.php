@@ -15,6 +15,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
+    <link rel="stylesheet" href="{{ asset('fonts/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/css/brands.min.css') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script
@@ -117,6 +119,18 @@
             } else {
                 rows[i].style.display = "none";
             }
+        }
+    }
+
+    function checkIfEmpty(inputId)
+    {
+        let input = document.getElementById(inputId);
+
+        $('#' + inputId + 'Alert').html('');
+        $('#' + inputId).removeClass('is-invalid');
+        if (input.value === '') {
+            $('#' + inputId + 'Alert').html('Dit veld mag niet leeg zijn.');
+            $('#' + inputId).addClass('is-invalid');
         }
     }
 </script>
