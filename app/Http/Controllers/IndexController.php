@@ -31,7 +31,7 @@ class IndexController extends Controller
             $records = RecordModel::all();
         }
         $total = RecordModel::all()->count();
-        $megaTotal = Request::all()->sum('amount');
+        $megaTotal = RecordModel::all()->sum('amount');
 
         return view('index', compact('records', 'total', 'pagination', 'megaTotal'));
     }
