@@ -79,18 +79,21 @@
 @section('section_2')
     <hr class="mt-5">
     <div class="row">
-        <div class="col-md-4 text-start">
+        <div class="col-md-3 text-start">
             <p>Zie hier alle ingevoerde platen</p>
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-3 text-center">
             @if($pagination[0] == '1')
                 <p>Pagination is <span class="text-success">ingeschakeld.</span></p>
             @elseif($pagination[0] == '0')
                 <p>Pagination is <span class="text-warning">uitgeschakeld.</span></p>
             @endif
         </div>
-        <div class="col-md-4 text-end">
-            <p>Totaal aantal: {{ $total }}</p>
+        <div class="col-md-3 text-end">
+            <p>Totaal aantal ingevoerd: {{ $total }}</p>
+        </div>
+        <div class="col-md-3 text-end">
+            <p>Totaal aantal platen: {{ $megaTotal }}</p>
         </div>
     </div>
     <div class="table-responsive">
