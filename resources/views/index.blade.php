@@ -87,7 +87,6 @@
             <p id="randomNumber"></p>
         </div>
         <div class="col-md-3 text-end">
-            <p>Totaal aantal ingevoerd: {{ $total }}</p>
         </div>
         <div class="col-md-3 text-end">
             <p>Totaal aantal platen: {{ $megaTotal }}</p>
