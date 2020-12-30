@@ -83,11 +83,8 @@
             <p>Zie hier alle ingevoerde platen</p>
         </div>
         <div class="col-md-3 text-center">
-            @if($pagination[0] == '1')
-                <p>Pagination is <span class="text-success">ingeschakeld.</span></p>
-            @elseif($pagination[0] == '0')
-                <p>Pagination is <span class="text-warning">uitgeschakeld.</span></p>
-            @endif
+            <a class="btn btn-outline-success btn-md" onclick="pickRandomSong()">Random nummer kiezen</a>
+            <p id="randomNumber"></p>
         </div>
         <div class="col-md-3 text-end">
             <p>Totaal aantal ingevoerd: {{ $total }}</p>
