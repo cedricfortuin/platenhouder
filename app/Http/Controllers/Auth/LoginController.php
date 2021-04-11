@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -23,8 +24,11 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($request->only('firstname', 'email', 'password'), $request->only('email'))) {
-            return back()->with('message', 'Verkeerde inloggegevens.');
+            Alert::toast('Inloggen mislukt!', 'error');
+            return back();
         }
-        return redirect()->route('index')->with('message', 'Je bent succesvol aangemeld en ingelogd');
+
+        Alert::toast('Succesvol ingelogd!', 'success');
+        return redirect()->route('index');
     }
 }

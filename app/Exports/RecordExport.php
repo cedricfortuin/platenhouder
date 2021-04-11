@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\RecordModel;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class RecordExport implements FromCollection
@@ -12,6 +12,6 @@ class RecordExport implements FromCollection
     */
     public function collection()
     {
-        return RecordModel::all();
+        return DB::table('records')->select('id', 'name', 'artist', 'amount')->get();
     }
 }

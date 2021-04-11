@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LogoutController extends Controller
 {
     public function logout()
     {
         auth()->logout();
-        return redirect()->route('index')->with('message', 'Je bent succesvol uitgelogd.');
+
+        Alert::toast('Succesvol uitgelogd!', 'success');
+        return redirect()->back();
     }
 }
