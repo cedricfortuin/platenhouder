@@ -16,53 +16,11 @@ class IndexController extends Controller
 
     public function index()
     {
-        $records = DB::table('records')->get();
-        $total = DB::table('records')->count();
-        $megaTotal = DB::table('records')->sum('amount');
-
-        return view('index', compact('total', 'megaTotal', 'records'));
+        return view('index');
     }
 
-    protected function addRecord(Request $request)
+    public function music()
     {
-        $request->validate([
-            'name' => 'required|max:256',
-            'artist' => 'required|max:256',
-            'owner' => 'required|max:256',
-            'amount' => 'required|max:256',
-            'type' => 'required|max:256'
-        ]);
-
-        RecordModel::create([
-            'name' => $request->name,
-            'artist' => $request->artist,
-            'owner' => $request->owner,
-            'amount' => $request->amount,
-            'type' => $request->type
-        ]);
-
-        Alert::toast('Succesvol toegevoegd!', 'success');
-        return redirect()->back();
-    }
-
-    protected function updateRecord(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|max:256',
-            'artist' => 'required|max:256',
-            'amount' => 'max:256',
-            'owner' => 'max:256'
-        ]);
-
-        RecordModel::where('id', '=', $id)
-            ->update([
-                'name' => $request->name,
-                'artist' => $request->artist,
-                'owner' => $request->owner,
-                'amount' => $request->amount
-            ]);
-
-        Alert::toast('Succesvol aangepast!', 'success');
-        return redirect()->back();
+        return view('pages.music');
     }
 }

@@ -1,6 +1,6 @@
-@extends('layouts.general_index')
+@extends('layouts.login_index')
 
-@section('section_2')
+@section('section_1')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

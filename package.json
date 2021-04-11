@@ -23,6 +23,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "bootstrap-table": "^1.18.2"
+        "bootstrap-table": "^1.18.2",
+        "chart.js": "^3.1.0",
+        "vue": "^2.6.12",
+        "vue-laravel-csrf": "^1.0.0"
     }
 }

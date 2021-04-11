@@ -10,12 +10,4 @@ class RecordModel extends Model
     use HasFactory;
 
     protected $table = 'records';
-
-    protected $fillable = [
-        'name',
-        'artist',
-        'owner',
-        'amount',
-        'type'
-    ];
 }

@@ -1,4 +1,4 @@
-@extends('layouts.general_index')
+@extends('layouts.login_index')
 
 @section('section_1')
 <div class="container">
