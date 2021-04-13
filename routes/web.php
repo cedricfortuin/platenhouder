@@ -4,11 +4,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Export\ExportController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Use\PagesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/music', []);
+Route::get('/', [PagesController::class, 'index'])->name('index');
+Route::get('/muziek', [PagesController::class, 'music'])->name('music');
 Route::get('/export', [ExportController::class, 'exportRecords'])->name('record.export');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

@@ -1,6 +1,7 @@
 require('./bootstrap');
 
-import 'chart.js'
+require('bootstrap-table');
+import 'bootstrap-table/dist/bootstrap-table.css';
 
 import Vue from 'vue';
 import App from './vue/app';

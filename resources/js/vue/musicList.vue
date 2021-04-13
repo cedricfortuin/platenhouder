@@ -1,6 +1,6 @@
 <template>
     <div class="table-responsive mx-auto">
-        <table id="recordTable" class="table table-sm">
+        <table id="recordTable" class="table">
             <thead>
                 <tr>
                     <td>#</td>
@@ -8,7 +8,6 @@
                     <td>Artiest</td>
                     <td>Soort</td>
                     <td>Hoeveel hebben we ervan?</td>
-                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -18,11 +17,6 @@
                     <td>{{ record.artist }}</td>
                     <td>{{ record.type }}</td>
                     <td>{{ record.amount }}</td>
-                    <td>
-                        <button type="button" class="btn btn-success text-white btn-md">
-                            <i class="far fa-edit"></i>
-                        </button>
-                    </td>
                 </tr>
             </tbody>
         </table>

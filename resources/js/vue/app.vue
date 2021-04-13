@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>
+        <div class="mb-5">
             <add-music-form/>
         </div>
         <music-list-view
@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         getList() {
-            axios.get('/api/music')
+            axios.get('/api/records')
                 .then(response => {
                     this.records = response.data;
                 })
