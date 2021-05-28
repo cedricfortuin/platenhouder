@@ -4,9 +4,12 @@ require('bootstrap-table');
 import 'bootstrap-table/dist/bootstrap-table.css';
 
 import Vue from 'vue';
-import App from './vue/app';
+import MusicApp from './vue/music/app';
+import CalendarAppMonth from './vue/calendar/calendar-month';
+import CalendarAppDay from './vue/calendar/calendar-day';
+import MeasurementsApp from './vue/measurements/app';
 
-const app = new Vue({
+new Vue({
     el: '#app',
-    components: { App }
+    components: { MusicApp, CalendarAppMonth, CalendarAppDay, MeasurementsApp }
 });

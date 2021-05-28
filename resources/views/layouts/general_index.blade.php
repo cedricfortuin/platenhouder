@@ -57,12 +57,12 @@
 </nav>
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-md-10 mx-auto">
-            @yield('section_1')
+        <div class="col-md-10 mx-auto" id="app">
+            @yield('content')
         </div>
     </div>
 </div>
-<footer class="text-center">
+<footer class="text-center mt-5">
     <div>
         <p>© {{ date('Y') }} <a class="text-decoration-none" href="https://cedricfortuin.com"
                                 target="_blank" {{ Popper::pop('Hehe reclame') }}>Cedric Fortuin</a></p>

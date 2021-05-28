@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Music;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\RecordModel;
+use Illuminate\Http\Request;
 
 class MusicItemController extends Controller
 {
@@ -15,7 +15,7 @@ class MusicItemController extends Controller
      */
     public function index()
     {
-        return RecordModel::orderby('id')->get();
+        return RecordModel::orderBy('id')->get();
     }
 
     /**
@@ -47,13 +47,7 @@ class MusicItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $currentlyPresentItem = RecordModel::find($id);
-
-        if($currentlyPresentItem) {
-//            $currentlyPresentItem
-        }
-
-        // To Do
+        //
     }
 
     /**
