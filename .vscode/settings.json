@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "driver": "SQLite",
+            "name": "platenhouder",
+            "database": "${workspaceFolder:platenhouder}/database/database.sqlite"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
