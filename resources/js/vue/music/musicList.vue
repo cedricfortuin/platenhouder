@@ -12,7 +12,7 @@
             </thead>
             <tbody>
                 <tr v-for="(record, index) in records" :key="index">
-                    <td>{{ record.id }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ record.name }}</td>
                     <td>{{ record.artist }}</td>
                     <td>{{ record.type }}</td>

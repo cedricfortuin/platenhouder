@@ -71,6 +71,6 @@
 <script src="{{ mix('js/app.js') }}" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js" integrity="sha512-dnUg2JxjlVoXHVdSMWDYm2Y5xcIrJg1N+juOuRi0yLVkku/g26rwHwysJDAMwahaDfRpr1AxFz43ktuMPr/l1A==" crossorigin="anonymous"></script>
 @yield('section_js')
-@include('sweetalert::alert')
+{{-- @include('sweetalert::alert') --}}
 </body>
 </html>
